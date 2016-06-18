@@ -30,4 +30,4 @@ $(document).ready(function(){
             .duration(1000)
             .attr("r", 40);
     };
-}
+})
