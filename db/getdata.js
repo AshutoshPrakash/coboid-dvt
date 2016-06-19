@@ -13,7 +13,7 @@ var con = mysql.createConnection({
 con.connect();
 
 GD.city = function(callback){
-    con.query('select * from City limit 10',function(err,rows){
+    con.query('select * from City limit 50',function(err,rows){
         callback(err,rows);
     });
 };
