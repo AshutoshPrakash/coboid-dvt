@@ -18,7 +18,7 @@ $(document).ready(function(){
         }
 
         var gap = 1;
-        var height = 300 - margin.top - margin.bottom;
+        var height = 600 - margin.top - margin.bottom;
         var width = 1000 - margin.left - margin.right;
         var animateDuration = 500;
         var animateDelay = 20;
@@ -36,11 +36,11 @@ $(document).ready(function(){
             .range([0, height]);
 
         var xScale = d3.scale.ordinal()
-            .domain(d3.range(0, data.length))
+            .domain(d3.range(0, data.length+1))
             .rangeBands([0, width]);
 
         var colors = d3.scale.linear()
-            .domain([0, data.length])
+            .domain([0, data.length+1])
             .range(["#C0C0C0","#000000"]);
 
         var chart = d3.select("#chart").append('svg')
@@ -97,7 +97,7 @@ $(document).ready(function(){
             .range([height, 0]);
 
         var hScale = d3.scale.ordinal()
-            .domain(d3.range(0, data.length))
+            .domain(d3.range(1, data.length+1))
             .rangeBands([0, width]);
 
         //V Axis
@@ -123,7 +123,8 @@ $(document).ready(function(){
             .scale(hScale)
             .orient('bottom')
             .tickValues(hScale.domain().filter(function(d,i){
-                return !(i % (data.length/5));
+                console.log(i+','+!(i % ((data.length)/5)))
+                return !(i % ((data.length)/5));
             }))
 
         //H Guide
